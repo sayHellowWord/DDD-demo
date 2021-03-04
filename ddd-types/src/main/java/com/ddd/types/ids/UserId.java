@@ -10,20 +10,11 @@ import com.ddd.types.common.Id;
  */
 public class UserId extends Id {
 
-    private Long id;
-
-    public UserId(Long id) {
-        if (id == null || 0 == id) {
+    public UserId(Long value) {
+        if (value == null || 0 == value) {
             throw new IllegalArgumentException("账号不能为空");
         }
-        this.id = id;
+        this.value = value;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

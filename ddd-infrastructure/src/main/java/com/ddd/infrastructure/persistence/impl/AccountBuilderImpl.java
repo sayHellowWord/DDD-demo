@@ -28,6 +28,7 @@ public class AccountBuilderImpl implements AccountBuilder {
         Currency currency = new Currency(accountDo.getCurrency());
         account.setAvailable(new Money(accountDo.getAvailableAmount(), currency));
         account.setDailyLimit(new Money(accountDo.getDailyLimitAmount(), currency));
+        account.setCurrency(currency);
         return account;
     }
 
@@ -37,7 +38,7 @@ public class AccountBuilderImpl implements AccountBuilder {
         if (account.getId() != null) {
             accountDO.setId(account.getId().getValue());
         }
-        accountDO.setUserId(account.getUserId().getId());
+        accountDO.setUserId(account.getUserId().getValue());
         accountDO.setAccountNumber(account.getAccountNumber().getValue());
         accountDO.setAvailableAmount(account.getAvailable().getAmout());
         accountDO.setDailyLimitAmount(account.getDailyLimit().getAmout());

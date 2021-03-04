@@ -8,8 +8,6 @@ import com.ddd.event.AccountEventProducer;
 import com.ddd.exception.DailyLimitExceededException;
 import com.ddd.external.ExchangeRateService;
 import com.ddd.repository.AccountRepository;
-import com.ddd.repository.TestModuleRepository;
-import com.ddd.repository.TestRepository;
 import com.ddd.types.AccountNumber;
 import com.ddd.types.Currency;
 import com.ddd.types.ExchangeRate;
@@ -19,7 +17,6 @@ import com.ddd.types.ids.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.math.BigDecimal;
 
 /**
@@ -31,17 +28,19 @@ import java.math.BigDecimal;
 @Service
 public class TransferServiceImpl implements TransferService {
 
-    @Resource
-    private TestRepository testRepository;
-
-    @Resource
-    private TestModuleRepository testModuleRepository;
-
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
     private AccountEventProducer accountEventProducer;
+
+    @Autowired
     private ExchangeRateService exchangeRateService;
+
+    /**
+     * 当前缺陷，领域服务于Spring耦合到期（业务逻辑与框架绑定）
+     */
+    @Autowired
     private AccountTransferService accountTransferService;
 
     @Override
@@ -57,7 +56,7 @@ public class TransferServiceImpl implements TransferService {
          */
         Account sourceAccount = accountRepository.find(new UserId(sourceUserId));
         Account targetAccount = accountRepository.find(new AccountNumber(targetAccountNumber));
-        ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(sourceAccount.getCurrency(), targetMoney.getCurrency());
+        ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(targetMoney.getCurrency(), sourceAccount.getCurrency());
 
         /**
          * 业务逻辑
@@ -66,6 +65,9 @@ public class TransferServiceImpl implements TransferService {
 
         /**
          * 保存数据
+         *
+         * 事物一致性保证：放到编排层当前看暂无问题，后续可放到repository
+         *
          */
         accountRepository.save(sourceAccount);
         accountRepository.save(targetAccount);

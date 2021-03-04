@@ -8,11 +8,10 @@ package com.ddd.types;
  */
 public class AccountNumber {
 
-
     private String value;
 
     public AccountNumber(String value) {
-        if (value == null || "".equals(value)){
+        if (value == null || "".equals(value)) {
             throw new IllegalArgumentException("账号不能为空");
         }
         this.value = value;

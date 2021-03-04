@@ -16,9 +16,10 @@ public class AccountId extends Id {
     }
 
     public AccountId(Long value) {
+        //校验
+
         this.value = value;
     }
-
 
 
 }

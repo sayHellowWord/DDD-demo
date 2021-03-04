@@ -3,6 +3,7 @@ package com.ddd.infrastructure.external;
 import com.ddd.external.ExchangeRateService;
 import com.ddd.types.Currency;
 import com.ddd.types.ExchangeRate;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
  * @author wubo15
  * @date 2021/3/4
  */
+@Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
 
     @Override
@@ -22,9 +24,8 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
             /**
              * 调用汇率服务
              */
+            return new ExchangeRate(new BigDecimal(10), source, target);
         }
-
-        return null;
     }
 
 

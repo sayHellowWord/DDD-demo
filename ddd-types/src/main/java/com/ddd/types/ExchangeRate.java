@@ -10,7 +10,6 @@ import java.math.BigDecimal;
  */
 public class ExchangeRate {
 
-
     private BigDecimal rage;
     private Currency source;
     private Currency target;
