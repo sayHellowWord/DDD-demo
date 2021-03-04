@@ -21,7 +21,7 @@ public class ExchangeRate {
     }
 
     public Money exchangeTo(Money targetMoney) {
-        BigDecimal targetMount = targetMoney.getAmout().multiply(rage);
+        BigDecimal targetMount = targetMoney.getAmount().multiply(rage);
         return new Money(targetMount, target);
     }
 
