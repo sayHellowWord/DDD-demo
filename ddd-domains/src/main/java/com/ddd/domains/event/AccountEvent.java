@@ -1,7 +1,7 @@
 package com.ddd.domains.event;
 
 import com.ddd.domains.entity.Account;
-import com.ddd.types.Money;
+import com.ddd.types.valueobject.Money;
 import lombok.Getter;
 import lombok.ToString;
 

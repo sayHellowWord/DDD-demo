@@ -1,8 +1,10 @@
 package com.ddd.domains.entity;
 
-import com.ddd.types.*;
 import com.ddd.types.ids.RepId;
 import com.ddd.types.ids.UserId;
+import com.ddd.types.valueobject.Address;
+import com.ddd.types.valueobject.Name;
+import com.ddd.types.valueobject.PhoneNumber;
 
 /**
  * Created by wubo15 on 2021/3/1.

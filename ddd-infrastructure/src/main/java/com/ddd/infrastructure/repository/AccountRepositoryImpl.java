@@ -5,11 +5,10 @@ import com.ddd.infrastructure.persistence.AccountBuilder;
 import com.ddd.infrastructure.persistence.AccountDo;
 import com.ddd.infrastructure.persistence.AccountMapper;
 import com.ddd.repository.AccountRepository;
-import com.ddd.types.AccountNumber;
+import com.ddd.types.valueobject.AccountNumber;
 import com.ddd.types.ids.AccountId;
 import com.ddd.types.ids.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;

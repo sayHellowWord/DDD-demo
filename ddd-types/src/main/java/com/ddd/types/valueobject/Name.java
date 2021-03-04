@@ -1,4 +1,4 @@
-package com.ddd.types;
+package com.ddd.types.valueobject;
 
 /**
  * Created by wubo15 on 2021/3/1.

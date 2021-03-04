@@ -1,4 +1,4 @@
-package com.ddd.types;
+package com.ddd.types.valueobject;
 
 import java.math.BigDecimal;
 

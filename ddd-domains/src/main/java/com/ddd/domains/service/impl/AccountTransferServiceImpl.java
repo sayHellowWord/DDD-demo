@@ -3,8 +3,8 @@ package com.ddd.domains.service.impl;
 import com.ddd.domains.entity.Account;
 import com.ddd.domains.service.AccountTransferService;
 import com.ddd.exception.DailyLimitExceededException;
-import com.ddd.types.ExchangeRate;
-import com.ddd.types.Money;
+import com.ddd.types.valueobject.ExchangeRate;
+import com.ddd.types.valueobject.Money;
 import org.springframework.stereotype.Service;
 
 /**

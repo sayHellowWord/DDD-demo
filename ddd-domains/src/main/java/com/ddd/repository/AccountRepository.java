@@ -1,7 +1,7 @@
 package com.ddd.repository;
 
 import com.ddd.domains.entity.Account;
-import com.ddd.types.AccountNumber;
+import com.ddd.types.valueobject.AccountNumber;
 import com.ddd.types.ids.AccountId;
 import com.ddd.types.ids.UserId;
 

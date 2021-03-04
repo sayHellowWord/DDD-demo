@@ -1,8 +1,8 @@
 package com.ddd.infrastructure.external;
 
 import com.ddd.external.ExchangeRateService;
-import com.ddd.types.Currency;
-import com.ddd.types.ExchangeRate;
+import com.ddd.types.valueobject.Currency;
+import com.ddd.types.valueobject.ExchangeRate;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

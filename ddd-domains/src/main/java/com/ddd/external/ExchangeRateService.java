@@ -1,7 +1,7 @@
 package com.ddd.external;
 
-import com.ddd.types.Currency;
-import com.ddd.types.ExchangeRate;
+import com.ddd.types.valueobject.Currency;
+import com.ddd.types.valueobject.ExchangeRate;
 
 /**
  * Created by wubo15 on 2021/3/4.

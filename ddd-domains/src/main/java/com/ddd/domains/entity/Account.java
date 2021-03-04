@@ -2,9 +2,9 @@ package com.ddd.domains.entity;
 
 import com.ddd.exception.DailyLimitExceededException;
 import com.ddd.exception.InsufficientFundsException;
-import com.ddd.types.AccountNumber;
-import com.ddd.types.Currency;
-import com.ddd.types.Money;
+import com.ddd.types.valueobject.AccountNumber;
+import com.ddd.types.valueobject.Currency;
+import com.ddd.types.valueobject.Money;
 import com.ddd.types.exception.InvalidCurrencyException;
 import com.ddd.types.ids.AccountId;
 import com.ddd.types.ids.UserId;
