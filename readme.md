@@ -1,5 +1,8 @@
 # 项目简介
 
+结合阿里技术专家详解DDD系列与COLA的落地
+
+
 # Domain Primitive
 
 Domain Primitive 是一个在特定领域里，拥有精准定义的、可自我验证的、拥有行为的 Value Object 。
