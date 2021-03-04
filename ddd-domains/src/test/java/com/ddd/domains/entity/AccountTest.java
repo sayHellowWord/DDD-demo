@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author wubo15
  * @date 2021/3/4
  */
-public class AccountETest {
+public class AccountTest {
 
     @Test
     public void testParamValid4AccountNumber() {
@@ -29,18 +29,18 @@ public class AccountETest {
 
     @Test
     public void testAccountWithdraw() throws Exception, DailyLimitExceededException {
-        AccountE accountE = new AccountE();
-        accountE.setId(new AccountId(1L));
-        accountE.setAccountNumber(new AccountNumber("123"));
-        accountE.setUserId(new UserId(1L));
+        Account account = new Account();
+        account.setId(new AccountId(1L));
+        account.setAccountNumber(new AccountNumber("123"));
+        account.setUserId(new UserId(1L));
         Currency currency = new Currency("CNY");
-        accountE.setAvailable(new Money(new BigDecimal(500L), currency));
-        accountE.setDailyLimit(new Money(new BigDecimal(100L), currency));
-        accountE.setCurrency(currency);
+        account.setAvailable(new Money(new BigDecimal(500L), currency));
+        account.setDailyLimit(new Money(new BigDecimal(100L), currency));
+        account.setCurrency(currency);
 
-        accountE.withdraw(new Money(new BigDecimal(20), currency));
+        account.withdraw(new Money(new BigDecimal(20), currency));
 
-        assertTrue(accountE.getAvailable().equals(new Money(new BigDecimal(480), currency)));
+        assertTrue(account.getAvailable().equals(new Money(new BigDecimal(480), currency)));
 
 //        account.withdraw(new Money(new BigDecimal(120), currency));
 

@@ -19,7 +19,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class AccountE {
+public class Account {
 
     private AccountId id;
 
@@ -33,10 +33,10 @@ public class AccountE {
 
     private Currency currency;
 
-    public AccountE() {
+    public Account() {
     }
 
-    public AccountE(AccountId id, AccountNumber accountNumber, UserId userId, Money available, Money dailyLimit, Currency currency) {
+    public Account(AccountId id, AccountNumber accountNumber, UserId userId, Money available, Money dailyLimit, Currency currency) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.userId = userId;

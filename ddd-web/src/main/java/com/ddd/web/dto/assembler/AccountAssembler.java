@@ -1,6 +1,6 @@
 package com.ddd.web.dto.assembler;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.web.dto.AccountDto;
 
 /**
@@ -15,13 +15,13 @@ public interface AccountAssembler {
      * @param accountDto
      * @return
      */
-    AccountE toAccount(AccountDto accountDto);
+    Account toAccount(AccountDto accountDto);
 
 
     /**
-     * @param accountE
+     * @param account
      * @return
      */
-    AccountDto fromAccount(AccountE accountE);
+    AccountDto fromAccount(Account account);
 
 }

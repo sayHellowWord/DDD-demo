@@ -1,6 +1,6 @@
 package com.ddd.domains.service.impl;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.domains.service.AccountTransferDomainService;
 import com.ddd.exception.DailyLimitExceededException;
 import com.ddd.types.valueobject.ExchangeRate;
@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service;
 public class AccountTransferDomainServiceImpl implements AccountTransferDomainService {
 
     @Override
-    public void transfer(AccountE sourceAccountE, AccountE targetAccountE, Money targetMoney, ExchangeRate exchangeRate) throws Exception, DailyLimitExceededException {
+    public void transfer(Account sourceAccount, Account targetAccount, Money targetMoney, ExchangeRate exchangeRate) throws Exception, DailyLimitExceededException {
         Money sourceMoney = exchangeRate.exchangeTo(targetMoney);
-        sourceAccountE.withdraw(sourceMoney);
-        targetAccountE.deposit(targetMoney);
+        sourceAccount.withdraw(sourceMoney);
+        targetAccount.deposit(targetMoney);
     }
 
 

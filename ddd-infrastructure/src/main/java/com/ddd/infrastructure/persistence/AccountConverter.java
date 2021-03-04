@@ -1,6 +1,6 @@
 package com.ddd.infrastructure.persistence;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 
 /**
  * Entity DO 转换
@@ -16,13 +16,13 @@ public interface AccountConverter {
      * @param accountDo
      * @return
      */
-    AccountE toAccount(AccountDO accountDo);
+    Account toAccount(AccountDO accountDo);
 
 
     /**
-     * @param accountE
+     * @param account
      * @return
      */
-    AccountDO fromAccount(AccountE accountE);
+    AccountDO fromAccount(Account account);
 
 }

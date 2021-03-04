@@ -1,7 +1,7 @@
 package com.ddd.application.impl;
 
 import com.ddd.application.TransferCmdExeService;
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.domains.event.AccountEvent;
 import com.ddd.domains.service.AccountTransferDomainService;
 import com.ddd.event.AccountEventProducer;
@@ -54,14 +54,14 @@ public class TransferCmdExeServiceImpl implements TransferCmdExeService {
         /**
          * 读取数据
          */
-        AccountE sourceAccountE = accountRepository.find(new UserId(sourceUserId));
-        AccountE targetAccountE = accountRepository.find(new AccountNumber(targetAccountNumber));
-        ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(targetMoney.getCurrency(), sourceAccountE.getCurrency());
+        Account sourceAccount = accountRepository.find(new UserId(sourceUserId));
+        Account targetAccount = accountRepository.find(new AccountNumber(targetAccountNumber));
+        ExchangeRate exchangeRate = exchangeRateService.getExchangeRate(targetMoney.getCurrency(), sourceAccount.getCurrency());
 
         /**
          * 业务逻辑
          */
-        accountTransferDomainService.transfer(sourceAccountE, targetAccountE, targetMoney, exchangeRate);
+        accountTransferDomainService.transfer(sourceAccount, targetAccount, targetMoney, exchangeRate);
 
         /**
          * 保存数据
@@ -69,13 +69,13 @@ public class TransferCmdExeServiceImpl implements TransferCmdExeService {
          * 事物一致性保证：放到编排层当前看暂无问题，后续可放到repository
          *
          */
-        accountRepository.save(sourceAccountE);
-        accountRepository.save(targetAccountE);
+        accountRepository.save(sourceAccount);
+        accountRepository.save(targetAccount);
 
         /**
          * 发送审计消息
          */
-        AccountEvent message = new AccountEvent(sourceAccountE, targetAccountE, targetMoney);
+        AccountEvent message = new AccountEvent(sourceAccount, targetAccount, targetMoney);
         accountEventProducer.send(message);
 
         return Result.success(true);

@@ -1,6 +1,6 @@
 package com.ddd.infrastructure.persistence.impl;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.infrastructure.persistence.AccountConverter;
 import com.ddd.infrastructure.persistence.AccountDO;
 import com.ddd.types.valueobject.AccountNumber;
@@ -20,29 +20,29 @@ import org.springframework.stereotype.Component;
 public class AccountConverterImpl implements AccountConverter {
 
     @Override
-    public AccountE toAccount(AccountDO accountDo) {
-        AccountE accountE = new AccountE();
-        accountE.setId(new AccountId(accountDo.getId()));
-        accountE.setAccountNumber(new AccountNumber(accountDo.getAccountNumber()));
-        accountE.setUserId(new UserId(accountDo.getUserId()));
+    public Account toAccount(AccountDO accountDo) {
+        Account account = new Account();
+        account.setId(new AccountId(accountDo.getId()));
+        account.setAccountNumber(new AccountNumber(accountDo.getAccountNumber()));
+        account.setUserId(new UserId(accountDo.getUserId()));
         Currency currency = new Currency(accountDo.getCurrency());
-        accountE.setAvailable(new Money(accountDo.getAvailableAmount(), currency));
-        accountE.setDailyLimit(new Money(accountDo.getDailyLimitAmount(), currency));
-        accountE.setCurrency(currency);
-        return accountE;
+        account.setAvailable(new Money(accountDo.getAvailableAmount(), currency));
+        account.setDailyLimit(new Money(accountDo.getDailyLimitAmount(), currency));
+        account.setCurrency(currency);
+        return account;
     }
 
     @Override
-    public AccountDO fromAccount(AccountE accountE) {
+    public AccountDO fromAccount(Account account) {
         AccountDO accountDO = new AccountDO();
-        if (accountE.getId() != null) {
-            accountDO.setId(accountE.getId().getValue());
+        if (account.getId() != null) {
+            accountDO.setId(account.getId().getValue());
         }
-        accountDO.setUserId(accountE.getUserId().getValue());
-        accountDO.setAccountNumber(accountE.getAccountNumber().getValue());
-        accountDO.setAvailableAmount(accountE.getAvailable().getAmount());
-        accountDO.setDailyLimitAmount(accountE.getDailyLimit().getAmount());
-        accountDO.setCurrency(accountE.getCurrency().getValue());
+        accountDO.setUserId(account.getUserId().getValue());
+        accountDO.setAccountNumber(account.getAccountNumber().getValue());
+        accountDO.setAvailableAmount(account.getAvailable().getAmount());
+        accountDO.setDailyLimitAmount(account.getDailyLimit().getAmount());
+        accountDO.setCurrency(account.getCurrency().getValue());
         return accountDO;
     }
 }

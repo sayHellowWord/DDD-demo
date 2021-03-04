@@ -1,6 +1,6 @@
 package com.ddd.domains.service;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.exception.DailyLimitExceededException;
 import com.ddd.types.valueobject.ExchangeRate;
 import com.ddd.types.valueobject.Money;
@@ -13,7 +13,7 @@ import com.ddd.types.valueobject.Money;
  */
 public interface AccountTransferDomainService {
 
-    void transfer(AccountE sourceAccountE, AccountE targetAccountE, Money targetMoney, ExchangeRate exchangeRate) throws Exception, DailyLimitExceededException;
+    void transfer(Account sourceAccount, Account targetAccount, Money targetMoney, ExchangeRate exchangeRate) throws Exception, DailyLimitExceededException;
 
 
 }

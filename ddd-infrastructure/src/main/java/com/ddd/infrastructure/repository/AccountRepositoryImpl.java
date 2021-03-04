@@ -1,6 +1,6 @@
 package com.ddd.infrastructure.repository;
 
-import com.ddd.domains.entity.AccountE;
+import com.ddd.domains.entity.Account;
 import com.ddd.infrastructure.persistence.AccountConverter;
 import com.ddd.infrastructure.persistence.AccountDO;
 import com.ddd.infrastructure.persistence.AccountMapper;
@@ -30,13 +30,13 @@ public class AccountRepositoryImpl implements AccountRepository {
     private AccountConverter accountConverter;
 
     @Override
-    public AccountE find(AccountId id) {
+    public Account find(AccountId id) {
         AccountDO accountDo = accountDao.selectById(id.getValue());
         return accountConverter.toAccount(accountDo);
     }
 
     @Override
-    public AccountE find(AccountNumber accountNumber) {
+    public Account find(AccountNumber accountNumber) {
         AccountDO accountDo = new AccountDO();
         accountDo.setUserId(Long.valueOf(accountNumber.getValue()));
         accountDo.setAccountNumber(accountNumber.getValue());
@@ -48,7 +48,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public AccountE find(UserId userId) {
+    public Account find(UserId userId) {
         AccountDO accountDo = new AccountDO();
         accountDo.setUserId(userId.getValue());
         accountDo.setAccountNumber("" + userId.getValue());
@@ -60,8 +60,8 @@ public class AccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public AccountE save(AccountE accountE) {
-        AccountDO accountDo = accountConverter.fromAccount(accountE);
+    public Account save(Account account) {
+        AccountDO accountDo = accountConverter.fromAccount(account);
         if (Objects.isNull(accountDo.getId())) {
             accountDao.insert(accountDo);
         } else {
