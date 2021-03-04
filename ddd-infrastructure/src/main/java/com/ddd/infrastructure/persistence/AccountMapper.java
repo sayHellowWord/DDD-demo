@@ -8,14 +8,14 @@ package com.ddd.infrastructure.persistence;
  */
 public interface AccountMapper {
 
-    AccountDo selectById(Long id);
+    AccountDO selectById(Long id);
 
-    int insert(AccountDo accountDo);
+    int insert(AccountDO accountDo);
 
-    int update(AccountDo accountDo);
+    int update(AccountDO accountDo);
 
-    AccountDo selectByAccountNumber(String accountNumber);
+    AccountDO selectByAccountNumber(String accountNumber);
 
-    AccountDo selectByUserId(Long id);
+    AccountDO selectByUserId(Long id);
 
 }

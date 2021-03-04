@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * @author wubo15
  * @date 2021/3/3
  */
-public interface TransferService {
+public interface TransferCmdExeService {
 
     Result<Boolean> transfer(Long sourceUserId, String targetAccountNumber, BigDecimal targetAmount, String targetCurrency) throws Exception, DailyLimitExceededException;
 }

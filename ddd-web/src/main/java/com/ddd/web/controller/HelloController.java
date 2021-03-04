@@ -1,6 +1,6 @@
-package com.ddd.web;
+package com.ddd.web.controller;
 
-import com.ddd.application.TransferService;
+import com.ddd.application.TransferCmdExeService;
 import com.ddd.exception.DailyLimitExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +18,12 @@ import java.math.BigDecimal;
 public class HelloController {
 
     @Autowired
-    private TransferService transferService;
+    private TransferCmdExeService transferCmdExeService;
 
     @RequestMapping("/helloWorld")
     public String index() {
         try {
-            transferService.transfer(1L, "123", BigDecimal.TEN, "USD");
+            transferCmdExeService.transfer(1L, "123", BigDecimal.TEN, "USD");
         } catch (Exception e) {
             e.printStackTrace();
         } catch (DailyLimitExceededException e) {

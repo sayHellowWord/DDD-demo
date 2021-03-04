@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @date 2021/3/3
  */
 @Data
-public class AccountDo {
+public class AccountDO {
 
     private Long id;
     private String accountNumber;

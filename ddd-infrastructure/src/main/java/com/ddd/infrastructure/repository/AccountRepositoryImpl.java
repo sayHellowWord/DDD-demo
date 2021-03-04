@@ -1,8 +1,8 @@
 package com.ddd.infrastructure.repository;
 
-import com.ddd.domains.entity.Account;
-import com.ddd.infrastructure.persistence.AccountBuilder;
-import com.ddd.infrastructure.persistence.AccountDo;
+import com.ddd.domains.entity.AccountE;
+import com.ddd.infrastructure.persistence.AccountConverter;
+import com.ddd.infrastructure.persistence.AccountDO;
 import com.ddd.infrastructure.persistence.AccountMapper;
 import com.ddd.repository.AccountRepository;
 import com.ddd.types.valueobject.AccountNumber;
@@ -27,47 +27,47 @@ public class AccountRepositoryImpl implements AccountRepository {
     private AccountMapper accountDao;
 
     @Autowired
-    private AccountBuilder accountBuilder;
+    private AccountConverter accountConverter;
 
     @Override
-    public Account find(AccountId id) {
-        AccountDo accountDo = accountDao.selectById(id.getValue());
-        return accountBuilder.toAccount(accountDo);
+    public AccountE find(AccountId id) {
+        AccountDO accountDo = accountDao.selectById(id.getValue());
+        return accountConverter.toAccount(accountDo);
     }
 
     @Override
-    public Account find(AccountNumber accountNumber) {
-        AccountDo accountDo = new AccountDo();
+    public AccountE find(AccountNumber accountNumber) {
+        AccountDO accountDo = new AccountDO();
         accountDo.setUserId(Long.valueOf(accountNumber.getValue()));
         accountDo.setAccountNumber(accountNumber.getValue());
         accountDo.setUserId(Long.valueOf(accountNumber.getValue()));
         accountDo.setAvailableAmount(new BigDecimal(555));
         accountDo.setDailyLimitAmount(new BigDecimal(100));
         accountDo.setCurrency("USD");
-        return accountBuilder.toAccount(accountDo);
+        return accountConverter.toAccount(accountDo);
     }
 
     @Override
-    public Account find(UserId userId) {
-        AccountDo accountDo = new AccountDo();
+    public AccountE find(UserId userId) {
+        AccountDO accountDo = new AccountDO();
         accountDo.setUserId(userId.getValue());
         accountDo.setAccountNumber("" + userId.getValue());
         accountDo.setUserId(userId.getValue());
         accountDo.setAvailableAmount(new BigDecimal(555));
         accountDo.setDailyLimitAmount(new BigDecimal(100));
         accountDo.setCurrency("CNY");
-        return accountBuilder.toAccount(accountDo);
+        return accountConverter.toAccount(accountDo);
     }
 
     @Override
-    public Account save(Account account) {
-        AccountDo accountDo = accountBuilder.fromAccount(account);
+    public AccountE save(AccountE accountE) {
+        AccountDO accountDo = accountConverter.fromAccount(accountE);
         if (Objects.isNull(accountDo.getId())) {
             accountDao.insert(accountDo);
         } else {
             accountDao.update(accountDo);
         }
 
-        return accountBuilder.toAccount(accountDo);
+        return accountConverter.toAccount(accountDo);
     }
 }

@@ -1,6 +1,6 @@
 package com.ddd.infrastructure.persistence.impl;
 
-import com.ddd.infrastructure.persistence.AccountDo;
+import com.ddd.infrastructure.persistence.AccountDO;
 import com.ddd.infrastructure.persistence.AccountMapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,29 +14,29 @@ import org.springframework.stereotype.Repository;
 public class AccountMapperImpl implements AccountMapper {
 
     @Override
-    public int insert(AccountDo accountDO) {
+    public int insert(AccountDO accountDO) {
         System.err.println("------------------插入:" + accountDO);
         return 0;
     }
 
     @Override
-    public int update(AccountDo accountDO) {
+    public int update(AccountDO accountDO) {
         System.err.println("------------------更新:" + accountDO);
         return 0;
     }
 
     @Override
-    public AccountDo selectByUserId(Long id) {
+    public AccountDO selectByUserId(Long id) {
         return null;
     }
 
     @Override
-    public AccountDo selectByAccountNumber(String accountNumber) {
+    public AccountDO selectByAccountNumber(String accountNumber) {
         return null;
     }
 
     @Override
-    public AccountDo selectById(Long id) {
+    public AccountDO selectById(Long id) {
         return null;
     }
 }

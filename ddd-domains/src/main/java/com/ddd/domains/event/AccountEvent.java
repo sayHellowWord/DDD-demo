@@ -1,6 +1,6 @@
 package com.ddd.domains.event;
 
-import com.ddd.domains.entity.Account;
+import com.ddd.domains.entity.AccountE;
 import com.ddd.types.valueobject.Money;
 import lombok.Getter;
 import lombok.ToString;
@@ -15,18 +15,18 @@ import lombok.ToString;
 @ToString
 public class AccountEvent {
 
-    private Account sourceAccount;
+    private AccountE sourceAccountE;
 
-    private Account targetAccount;
+    private AccountE targetAccountE;
 
     private Money targetMoney;
 
     private AccountEvent() {
     }
 
-    public AccountEvent(Account sourceAccount, Account targetAccount, Money targetMoney) {
-        this.sourceAccount = sourceAccount;
-        this.targetAccount = targetAccount;
+    public AccountEvent(AccountE sourceAccountE, AccountE targetAccountE, Money targetMoney) {
+        this.sourceAccountE = sourceAccountE;
+        this.targetAccountE = targetAccountE;
         this.targetMoney = targetMoney;
     }
 

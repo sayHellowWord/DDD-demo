@@ -1,6 +1,6 @@
 package com.ddd.repository;
 
-import com.ddd.domains.entity.Account;
+import com.ddd.domains.entity.AccountE;
 import com.ddd.types.valueobject.AccountNumber;
 import com.ddd.types.ids.AccountId;
 import com.ddd.types.ids.UserId;
@@ -13,11 +13,11 @@ import com.ddd.types.ids.UserId;
  */
 public interface AccountRepository {
 
-    Account find(AccountId id);
+    AccountE find(AccountId id);
 
-    Account find(AccountNumber accountNumber);
+    AccountE find(AccountNumber accountNumber);
 
-    Account find(UserId userId);
+    AccountE find(UserId userId);
 
-    Account save(Account account);
+    AccountE save(AccountE accountE);
 }

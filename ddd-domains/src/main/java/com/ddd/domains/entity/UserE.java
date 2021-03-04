@@ -12,7 +12,7 @@ import com.ddd.types.valueobject.PhoneNumber;
  * @author wubo15
  * @date 2021/3/1
  */
-public class User {
+public class UserE {
 
     UserId userId;
 
