@@ -26,8 +26,8 @@ public class AccountDO {
                 "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", userId=" + userId +
-                ", availableAmout=" + availableAmount +
-                ", dailyLimitAmout=" + dailyLimitAmount +
+                ", availableAmount=" + availableAmount +
+                ", dailyLimitAmount=" + dailyLimitAmount +
                 ", currency='" + currency + '\'' +
                 '}';
     }
