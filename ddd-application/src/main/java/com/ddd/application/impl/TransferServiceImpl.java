@@ -8,6 +8,8 @@ import com.ddd.event.AccountEventProducer;
 import com.ddd.exception.DailyLimitExceededException;
 import com.ddd.external.ExchangeRateService;
 import com.ddd.repository.AccountRepository;
+import com.ddd.repository.TestModuleRepository;
+import com.ddd.repository.TestRepository;
 import com.ddd.types.AccountNumber;
 import com.ddd.types.Currency;
 import com.ddd.types.ExchangeRate;
@@ -17,6 +19,7 @@ import com.ddd.types.ids.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 
 /**
@@ -27,6 +30,12 @@ import java.math.BigDecimal;
  */
 @Service
 public class TransferServiceImpl implements TransferService {
+
+    @Resource
+    private TestRepository testRepository;
+
+    @Resource
+    private TestModuleRepository testModuleRepository;
 
     @Autowired
     private AccountRepository accountRepository;
