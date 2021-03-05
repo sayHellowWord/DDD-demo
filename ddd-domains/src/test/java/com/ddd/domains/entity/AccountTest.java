@@ -6,11 +6,13 @@ import com.ddd.types.ids.UserId;
 import com.ddd.types.valueobject.AccountNumber;
 import com.ddd.types.valueobject.Currency;
 import com.ddd.types.valueobject.Money;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by wubo15 on 2021/3/4.
@@ -21,13 +23,15 @@ import static org.junit.Assert.*;
 public class AccountTest {
 
     @Test
+    @DisplayName("账户编码验证")
     public void testParamValid4AccountNumber() {
         String accountNumberStr = "123";
         AccountNumber accountNumber = new AccountNumber(accountNumberStr);
-        assertEquals(accountNumberStr, accountNumber.getValue());
+        Assertions.assertEquals(accountNumber.getValue(), accountNumberStr);
     }
 
     @Test
+    @DisplayName("账户正常转出+超过日限额转出")
     public void testAccountWithdraw() throws Exception, DailyLimitExceededException {
         Account account = new Account();
         account.setId(new AccountId(1L));
@@ -39,10 +43,13 @@ public class AccountTest {
         account.setCurrency(currency);
 
         account.withdraw(new Money(new BigDecimal(20), currency));
-
-        assertTrue(account.getAvailable().equals(new Money(new BigDecimal(480), currency)));
-
-//        account.withdraw(new Money(new BigDecimal(120), currency));
+        Assertions.assertEquals(account.getAvailable(), new Money(new BigDecimal(480), currency));
+        Assertions.assertThrows(DailyLimitExceededException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                account.withdraw(new Money(new BigDecimal(120), currency));
+            }
+        });
 
     }
 }

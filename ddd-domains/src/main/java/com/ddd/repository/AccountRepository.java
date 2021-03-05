@@ -4,6 +4,7 @@ import com.ddd.domains.entity.Account;
 import com.ddd.types.valueobject.AccountNumber;
 import com.ddd.types.ids.AccountId;
 import com.ddd.types.ids.UserId;
+import com.sun.istack.internal.NotNull;
 
 /**
  * Created by wubo15 on 2021/3/3.
@@ -13,11 +14,11 @@ import com.ddd.types.ids.UserId;
  */
 public interface AccountRepository {
 
-    Account find(AccountId id);
+    Account find(@NotNull AccountId id);
 
-    Account find(AccountNumber accountNumber);
+    Account find(@NotNull AccountNumber accountNumber);
 
-    Account find(UserId userId);
+    Account find(@NotNull UserId userId);
 
-    Account save(Account account);
+    Account save(@NotNull Account account);
 }
