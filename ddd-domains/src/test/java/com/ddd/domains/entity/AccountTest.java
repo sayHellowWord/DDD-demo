@@ -44,12 +44,10 @@ public class AccountTest {
 
         account.withdraw(new Money(new BigDecimal(20), currency));
         Assertions.assertEquals(account.getAvailable(), new Money(new BigDecimal(480), currency));
-        Assertions.assertThrows(DailyLimitExceededException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                account.withdraw(new Money(new BigDecimal(120), currency));
-            }
-        });
+
+//        org.assertj.core.api.Assertions
+
+        Assertions.assertThrows(DailyLimitExceededException.class, () -> account.withdraw(new Money(new BigDecimal(120), currency)));
 
     }
 }
