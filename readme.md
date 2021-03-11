@@ -115,6 +115,11 @@ public void pay(Money money, Currency targetCurrency, Long recipientId) {
 DO:
 Entity:字段和方法应该和业务语言保持一致，和持久化方式无关,Entity的生命周期应该仅存在于内存中
 DTO:避免让业务对象变成一个万能大对象
+ 
+ 
+##  Change-Tracking 变更追踪
+基于Snapshot的方案：当数据从DB里取出来后，在内存中保存一份snapshot，然后在数据写入时和snapshot比较。常见的实现如Hibernate
+基于Proxy的方案：当数据从DB里取出来后，通过weaving的方式将所有setter都增加一个切面来判断setter是否被调用以及值是否变更，如果变更则标记为Dirty。在保存时根据Dirty判断是否需要更新。常见的实现如Entity Framework。
 
 # 领域层设计规范
 开闭原则   组合
